@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="adminstrateurpage.adminpagecontroller">
+   <children>
+      <AnchorPane prefHeight="72.0" prefWidth="770.0" styleClass="topbar" stylesheets="@admin.css">
+         <children>
+            <Label alignment="CENTER" layoutX="234.0" layoutY="21.0" prefHeight="30.0" prefWidth="302.0" styleClass="topbarHeader" stylesheets="@admin.css" text="Systéme de Gestion Universitaire">
+               <font>
+                  <Font name="System Bold" size="19.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="asideAnchorPane" layoutY="71.0" prefHeight="451.0" prefWidth="219.0" styleClass="aside" stylesheets="@admin.css">
+         <children>
+            <ImageView fitHeight="94.0" fitWidth="119.0" layoutX="64.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/18958255-removebg-preview.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="adminName" alignment="CENTER" layoutY="114.0" prefHeight="27.0" prefWidth="219.0" styleClass="adminNmae" stylesheets="@../application/application.css" text="admin name">
+               <font>
+                  <Font name="System Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="48.0" layoutY="414.0" mnemonicParsing="false" onAction="#switchmainpage" prefHeight="30.0" prefWidth="121.0" styleClass="logoutButton" stylesheets="@admin.css" text="Logout">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <ToggleButton fx:id="departementButton" layoutX="7.0" layoutY="162.0" mnemonicParsing="false" onAction="#SwitchEntiteAnchorPane" prefHeight="45.0" prefWidth="203.0" styleClass="logoutButton" stylesheets="@admin.css" text="DEPARTEMENT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="filiereButton" layoutX="7.0" layoutY="211.0" mnemonicParsing="false" onAction="#SwitchEntiteAnchorPane" prefHeight="45.0" prefWidth="203.0" styleClass="logoutButton" stylesheets="@admin.css" text="FILIERE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="moduleButton" layoutX="7.0" layoutY="260.0" mnemonicParsing="false" onAction="#SwitchEntiteAnchorPane" prefHeight="45.0" prefWidth="203.0" styleClass="logoutButton" stylesheets="@admin.css" text="MODULE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="ensaignantButton" layoutX="7.0" layoutY="309.0" mnemonicParsing="false" onAction="#SwitchEntiteAnchorPane" prefHeight="45.0" prefWidth="203.0" styleClass="logoutButton" stylesheets="@admin.css" text="ENSAIGNANT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+            <ToggleButton fx:id="etudiantButton" layoutX="7.0" layoutY="358.0" mnemonicParsing="false" onAction="#SwitchEntiteAnchorPane" prefHeight="45.0" prefWidth="203.0" styleClass="logoutButton" stylesheets="@admin.css" text="ETUDIANT">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></ToggleButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorePaneDepartement" layoutX="218.0" layoutY="71.0" prefHeight="451.0" prefWidth="553.0" visible="false">
+         <children>
+            <TabPane layoutX="1.0" prefHeight="451.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Affichage">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="304.0" prefWidth="553.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="15.0" prefHeight="35.0" prefWidth="179.0" text="Tous les departements">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                              <TableView fx:id="departementTableview" cache="true" layoutY="58.0" minHeight="278.0" prefHeight="335.0" prefWidth="553.0">
+                                <columns>
+                                  <TableColumn fx:id="depColumnId" prefWidth="57.0" text="Id" />
+                                  <TableColumn fx:id="depColumnNom" prefWidth="93.0" text="Nom" />
+                                    <TableColumn fx:id="depColumnCd" prefWidth="114.0" text="Chef departement" />
+                                </columns>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </TableView>
+                              <TextField fx:id="searchTextField" layoutX="269.0" layoutY="15.0" onKeyTyped="#searchDynamique" prefHeight="30.0" prefWidth="160.0" promptText="Entrer Nom Departement" style="-fx-border-color: black;" stylesheets="@admin.css">
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                              </TextField>
+                              <ToggleButton layoutX="445.0" layoutY="13.0" mnemonicParsing="false" onAction="#search" prefHeight="30.0" prefWidth="94.0" styleClass="searchButton" stylesheets="@admin.css" text="Search" />
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                  <Tab text="Departement Fililere">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="391.0" prefWidth="552.0">
+                           <children>
+                              <TableView fx:id="DepFiliereTableView" cache="true" layoutY="58.0" prefHeight="335.0" prefWidth="553.0" styleClass=".table" stylesheets="@../application/application.css">
+                                 <columns>
+                                    <TableColumn fx:id="depFiliereIDcolumn" prefWidth="57.0" text="ID" />
+                                    <TableColumn fx:id="depFiliereNomcolumn" prefWidth="491.0" text="Nom" />
+                                 </columns>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </TableView>
+                              <TextField fx:id="searchFiliereByDepartement" layoutX="276.0" layoutY="15.0" prefHeight="30.0" prefWidth="160.0" promptText="Search by Departement" style="-fx-border-color: black;" stylesheets="@admin.css">
+                                 <effect>
+                                    <Blend />
+                                 </effect>
+                                 <font>
+                                    <Font name="System Italic" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <ToggleButton layoutX="445.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchFiliereOfdep" prefHeight="30.0" prefWidth="94.0" styleClass="searchButton" stylesheets="@admin.css" text="Search" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorPaneFiliere" layoutX="219.0" layoutY="71.0" prefHeight="451.0" prefWidth="552.0" visible="false">
+         <children>
+            <TabPane layoutX="1.0" layoutY="1.0" prefHeight="451.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Affichage">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="335.0" prefWidth="579.0">
+                           <children>
+                              <TableView fx:id="filiereTableview" layoutY="58.0" prefHeight="334.0" prefWidth="551.0">
+                                <columns>
+                                  <TableColumn fx:id="filiereColumnID" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="filiereColumnNom" prefWidth="118.0" text="Nom" />
+                                    <TableColumn fx:id="filiereColumnResponsable" prefWidth="118.0" text="Responsable" />
+                                    <TableColumn fx:id="filiereColumnDepartement" prefWidth="239.0" text="Departement" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="searchTextFieldFiliere" layoutX="275.0" layoutY="15.0" prefHeight="30.0" prefWidth="160.0" promptText="Search by Nom" />
+                              <ToggleButton layoutX="445.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchfiliere" prefHeight="30.0" prefWidth="94.0" styleClass="searchButton" stylesheets="@admin.css" text="Search" />
+                              <Label layoutX="14.0" layoutY="15.0" prefHeight="35.0" prefWidth="179.0" text="Tous les Filiére">
+                                 <font>
+                                    <Font name="System Bold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+                <Tab text="Insertion">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="162.0" prefWidth="295.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="82.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="142.0" text="Responsable:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="202.0" text="Departement:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="18.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="choiceboxDepartement" layoutX="199.0" layoutY="202.0" prefHeight="26.0" prefWidth="190.0" />
+                              <ChoiceBox fx:id="choiceboxResponsable" layoutX="199.0" layoutY="142.0" prefHeight="26.0" prefWidth="187.0" />
+                              <TextField fx:id="nomFiliereInputTextField" layoutX="199.0" layoutY="82.0" prefHeight="26.0" prefWidth="187.0" />
+                              <Label fx:id="filiereInsertEtat" alignment="CENTER" layoutX="-1.0" layoutY="248.0" prefHeight="27.0" prefWidth="554.0">
+                                 <font>
+                                    <Font name="System Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <ToggleButton layoutX="174.0" layoutY="300.0" mnemonicParsing="false" onAction="#ajouterfiliere" prefHeight="45.0" prefWidth="203.0" styleClass="searchButton" stylesheets="@admin.css" text="Ajouter" />
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="56.0" prefWidth="554.0" text="Insertion">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="31.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorePaneEnsaignant" layoutX="218.0" layoutY="71.0" prefHeight="454.0" prefWidth="554.0">
+         <children>
+            <TabPane layoutX="1.0" prefHeight="454.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Affichage">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="EnsaignantTableview" layoutY="58.0" prefHeight="335.0" prefWidth="550.0">
+                                 <columns>
+                                    <TableColumn fx:id="ensaiColumnId" prefWidth="54.0" text="Id" />
+                                    <TableColumn fx:id="ensaiColumnNom" prefWidth="96.0" text="Nom" />
+                                    <TableColumn fx:id="ensaiColumnPrenom" prefWidth="112.0" text="Prenom" />
+                                    <TableColumn fx:id="ensaiColumnEmail" prefWidth="165.0" text="Email" />
+                                    <TableColumn fx:id="ensaiColumnGrade" prefWidth="165.0" text="Grade" />
+                                 </columns>
+                              </TableView>
+                              <TextField fx:id="SearchTextfieldAllEnsaignant" layoutX="277.0" layoutY="15.0" onKeyTyped="#searchAllEnsaignantDynamique" />
+                              <ToggleButton layoutX="446.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchAllEnsaignant" prefHeight="30.0" prefWidth="94.0" styleClass="searchButton" stylesheets="@admin.css" text="Search" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                <Tab text="Insertion">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="25.0" prefHeight="32.0" prefWidth="98.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="64.0" prefHeight="32.0" prefWidth="98.0" text="Prenom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="103.0" prefHeight="32.0" prefWidth="98.0" text="Email:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="154.0" prefHeight="32.0" prefWidth="98.0" text="Grade:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="ensaiNomTextfield" layoutX="112.0" layoutY="29.0" prefHeight="26.0" prefWidth="207.0" promptText="Entrer le nom de l'ensaignant" />
+                              <TextField fx:id="ensaiPrenomTextfield" layoutX="112.0" layoutY="67.0" prefHeight="26.0" prefWidth="207.0" promptText="Entrer le prénom de l'ensaignant" />
+                              <TextField fx:id="ensaiEmailTextfield" layoutX="114.0" layoutY="106.0" prefHeight="26.0" prefWidth="207.0" promptText="ensaignant@email.com" />
+                              <Spinner fx:id="spinnerensai" layoutX="112.0" layoutY="158.0" />
+                              <Button fx:id="ajouterbutton" layoutX="141.0" layoutY="233.0" mnemonicParsing="false" onAction="#ajoutEnsaignant" prefHeight="35.0" prefWidth="247.0" styleClass="searchButton" stylesheets="@admin.css" text="Ajouter" />
+                              <Label fx:id="emailcheckensai" layoutX="155.0" layoutY="204.0" prefHeight="18.0" prefWidth="219.0" visible="false" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="modifier">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="39.0" prefHeight="32.0" prefWidth="98.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="77.0" prefHeight="32.0" prefWidth="98.0" text="Prenom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="116.0" prefHeight="32.0" prefWidth="98.0" text="Email:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="165.0" prefHeight="32.0" prefWidth="98.0" text="Grade:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="ensaiNomTextfieldUpdate" layoutX="112.0" layoutY="42.0" prefHeight="26.0" prefWidth="207.0" />
+                              <TextField fx:id="ensaiPrenomTextfieldUpdate" layoutX="112.0" layoutY="83.0" prefHeight="26.0" prefWidth="207.0" />
+                              <TextField fx:id="ensaiEmailTextfieldUpdate" layoutX="112.0" layoutY="119.0" prefHeight="26.0" prefWidth="207.0" />
+                              <Spinner fx:id="spinnerensaiUpdate" layoutX="112.0" layoutY="165.0" />
+                              <Button layoutX="62.0" layoutY="222.0" mnemonicParsing="false" onAction="#updateEnsaignantInfos" prefHeight="35.0" prefWidth="186.0" stylesheets="@../application/application.css" text="Modifier" />
+                              <Label fx:id="emailcheckensai1" layoutX="155.0" layoutY="204.0" prefHeight="18.0" prefWidth="219.0" text="checker la strucutre de votre email" visible="false" />
+                              <TextField fx:id="searchTextFieldUpdateEnsaignant" layoutX="319.0" layoutY="14.0" promptText="search by Id" />
+                              <Button layoutX="485.0" layoutY="12.0" mnemonicParsing="false" onAction="#updateEnsaignantInfosSearch" prefHeight="30.0" prefWidth="62.0" stylesheets="@../application/application.css" text="search" />
+                              <Label fx:id="updateEtatEnsaignant" layoutY="196.0" prefHeight="26.0" prefWidth="553.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="302.0" layoutY="222.0" mnemonicParsing="false" onAction="#supprimerEnsaignantInfos" prefHeight="35.0" prefWidth="186.0" stylesheets="@../application/application.css" text="Supprimer" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="anchorePaneModule" layoutX="219.0" layoutY="72.0" prefHeight="454.0" prefWidth="551.0" visible="false">
+         <children>
+            <TabPane prefHeight="451.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Affichage">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <TableView fx:id="modulesTableView" layoutX="-1.0" layoutY="58.0" prefHeight="336.0" prefWidth="553.0">
+                                <columns>
+                                  <TableColumn fx:id="modulesColumnID" prefWidth="75.0" text="ID" />
+                                  <TableColumn fx:id="modulesColumnNom" prefWidth="75.0" text="Nom" />
+                                    <TableColumn fx:id="modulesColumnEnsai" prefWidth="175.0" text="Ensaignant" />
+                                    <TableColumn fx:id="modulesColumnFiliere" prefWidth="227.0" text="Filiere" />
+                                </columns>
+                              </TableView>
+                              <Button layoutX="482.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchModules" styleClass="searchButton" stylesheets="@admin.css" text="Search" />
+                              <TextField fx:id="textFieldModule" layoutX="301.0" layoutY="15.0" promptText="Searching by Nom" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                <Tab text="Insertion">
+                     <content>
+                        <AnchorPane prefHeight="300.0" prefWidth="551.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="82.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="142.0" text="Ensaignant:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="202.0" text="Departement:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="insertionModuleNom" layoutX="200.0" layoutY="82.0" prefHeight="26.0" prefWidth="187.0" promptText="Entrer un nom" />
+                              <ChoiceBox fx:id="modulesEnsaignantChoixBox" layoutX="199.0" layoutY="142.0" prefHeight="26.0" prefWidth="187.0" />
+                              <ChoiceBox fx:id="modulesDepartementChoixBox" layoutX="199.0" layoutY="202.0" prefHeight="26.0" prefWidth="187.0" />
+                              <Button layoutX="174.0" layoutY="310.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="203.0" styleClass="searchButton" stylesheets="@admin.css" text="Ajouter">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" layoutX="-2.0" layoutY="262.0" prefHeight="18.0" prefWidth="553.0" textFill="RED">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutY="2.0" prefHeight="45.0" prefWidth="550.0" text="INSERTION">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="31.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+      <AnchorPane fx:id="anchorePaneEtudiant" layoutX="219.0" layoutY="71.0" prefHeight="454.0" prefWidth="551.0" visible="false">
+         <children>
+            <TabPane prefHeight="454.0" prefWidth="550.0" tabClosingPolicy="UNAVAILABLE">
+              <tabs>
+                <Tab text="Affichage">
+                     <content>
+                        <AnchorPane prefHeight="322.0" prefWidth="554.0">
+                           <children>
+                              <TableView fx:id="etudiantTableView" layoutX="-2.0" layoutY="58.0" prefHeight="335.0" prefWidth="553.0">
+                                <columns>
+                                  <TableColumn fx:id="etudiantColumnCodeApoge" prefWidth="81.0" text="Code Apogée" />
+                                  <TableColumn fx:id="etudiantColumnNom" prefWidth="83.0" text="nom" />
+                                    <TableColumn fx:id="etudiantColumnPrenom" prefWidth="87.0" text="Prenom" />
+                                    <TableColumn fx:id="etudiantColumnEmail" prefWidth="205.0" text="email" />
+                                    <TableColumn fx:id="etudiantColumnFiliere" prefWidth="96.0" text="Filiére" />
+                                </columns>
+                              </TableView>
+                              <TextField fx:id="etudiantSearchInputField" layoutX="269.0" layoutY="15.0" prefWidth="160.0" promptText="Search by nom complet" />
+                              <Button layoutX="445.0" layoutY="15.0" mnemonicParsing="false" onAction="#searchEtudiant" prefHeight="30.0" prefWidth="79.0" styleClass="searchButton" stylesheets="@admin.css" text="Search" />
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                <Tab text="Insertion">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="76.0" prefHeight="35.0" prefWidth="62.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="etudiantNomInput" layoutX="155.0" layoutY="81.0" prefHeight="26.0" prefWidth="243.0" promptText="Entrez Nom" />
+                              <Label layoutX="14.0" layoutY="126.0" prefHeight="35.0" prefWidth="90.0" text="Prénom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="etudiantPrénomInput" layoutX="153.0" layoutY="131.0" prefHeight="26.0" prefWidth="247.0" promptText="Entrez Prénom" />
+                              <Label layoutX="14.0" layoutY="176.0" prefHeight="35.0" prefWidth="69.0" text="Email:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="etudiantEmailInput" layoutX="153.0" layoutY="181.0" prefHeight="26.0" prefWidth="247.0" promptText="Entrez Email" />
+                              <Label layoutX="14.0" layoutY="226.0" prefHeight="35.0" prefWidth="71.0" text="Filiére:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="22.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="FilérechoiceBoxInput" layoutX="155.0" layoutY="231.0" prefHeight="26.0" prefWidth="252.0" />
+                              <ToggleButton layoutX="109.0" layoutY="319.0" mnemonicParsing="false" onAction="#inserezEtudiant" prefHeight="30.0" prefWidth="344.0" styleClass="searchButton" stylesheets="@admin.css" text="Inserez" />
+                              <Label fx:id="InsertionEtatEtudiant" alignment="CENTER" layoutX="1.0" layoutY="252.0" prefHeight="18.0" prefWidth="551.0">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="-1.0" layoutY="1.0" prefHeight="51.0" prefWidth="553.0" text="INSERTION">
+                                 <font>
+                                    <Font name="Berlin Sans FB Demi Bold" size="30.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="modifier">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="68.0" prefHeight="32.0" prefWidth="98.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="13.0" layoutY="106.0" prefHeight="32.0" prefWidth="98.0" text="Prenom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="145.0" prefHeight="32.0" prefWidth="98.0" text="Email:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="188.0" prefHeight="32.0" prefWidth="98.0" text="Filiére:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="etudiantUpdateNom" layoutX="112.0" layoutY="71.0" prefHeight="26.0" prefWidth="207.0" />
+                              <TextField fx:id="etudiantUpdatePrenom" layoutX="112.0" layoutY="109.0" prefHeight="26.0" prefWidth="207.0" />
+                              <TextField fx:id="etudiantUpdateEmail" layoutX="112.0" layoutY="148.0" prefHeight="26.0" prefWidth="207.0" />
+                              <Button layoutX="62.0" layoutY="265.0" mnemonicParsing="false" onAction="#modifierInformationEtudiant" prefHeight="35.0" prefWidth="186.0" stylesheets="@../application/application.css" text="Modifier" />
+                              <Label fx:id="emailcheckensai11" layoutX="155.0" layoutY="204.0" prefHeight="18.0" prefWidth="219.0" text="checker la strucutre de votre email" visible="false" />
+                              <TextField fx:id="SearchInputUpdateEtudiant" layoutX="319.0" layoutY="14.0" promptText="search by Code Apogée" />
+                              <Button layoutX="485.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchForUpdateEtudiant" prefHeight="30.0" prefWidth="62.0" stylesheets="@../application/application.css" text="search" />
+                              <Label fx:id="updateEtatEnsaignant1" layoutX="1.0" layoutY="229.0" prefHeight="26.0" prefWidth="553.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="303.0" layoutY="266.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="186.0" stylesheets="@../application/application.css" text="Supprimer" />
+                              <ChoiceBox fx:id="etudiantUpdateFiliére" layoutX="112.0" layoutY="191.0" prefHeight="26.0" prefWidth="207.0" />
+                              <Label layoutX="14.0" layoutY="26.0" prefHeight="32.0" prefWidth="116.0" text="Code Apogé:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="etudiantCodeApogéLabel" layoutX="130.0" layoutY="26.0" prefHeight="32.0" prefWidth="116.0">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+                  <Tab text="ajouter Notes">
+                     <content>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="68.0" prefHeight="32.0" prefWidth="98.0" text="Nom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="13.0" layoutY="106.0" prefHeight="32.0" prefWidth="98.0" text="Prenom:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="145.0" prefHeight="32.0" prefWidth="98.0" text="Email:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="14.0" layoutY="188.0" prefHeight="32.0" prefWidth="98.0" text="Filiére:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="etudiantUpdateNom1" layoutX="112.0" layoutY="71.0" prefHeight="26.0" prefWidth="207.0" />
+                              <TextField fx:id="etudiantUpdatePrenom1" layoutX="112.0" layoutY="109.0" prefHeight="26.0" prefWidth="207.0" />
+                              <TextField fx:id="etudiantUpdateEmail1" layoutX="112.0" layoutY="148.0" prefHeight="26.0" prefWidth="207.0" />
+                              <Button layoutX="62.0" layoutY="265.0" mnemonicParsing="false" onAction="#modifierInformationEtudiant" prefHeight="35.0" prefWidth="186.0" stylesheets="@../application/application.css" text="Modifier" />
+                              <Label fx:id="emailcheckensai111" layoutX="155.0" layoutY="204.0" prefHeight="18.0" prefWidth="219.0" text="checker la strucutre de votre email" visible="false" />
+                              <TextField fx:id="SearchInputUpdateEtudiant1" layoutX="319.0" layoutY="14.0" promptText="search by Code Apogée" />
+                              <Button layoutX="485.0" layoutY="12.0" mnemonicParsing="false" onAction="#searchForUpdateEtudiant" prefHeight="30.0" prefWidth="62.0" stylesheets="@../application/application.css" text="search" />
+                              <Label fx:id="updateEtatEnsaignant11" layoutX="1.0" layoutY="229.0" prefHeight="26.0" prefWidth="553.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="System Bold" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Button layoutX="303.0" layoutY="266.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="186.0" stylesheets="@../application/application.css" text="Supprimer" />
+                              <ChoiceBox fx:id="etudiantUpdateFiliére1" layoutX="112.0" layoutY="191.0" prefHeight="26.0" prefWidth="207.0" />
+                              <Label layoutX="14.0" layoutY="11.0" prefHeight="32.0" prefWidth="116.0" text="Code Apogé:">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="etudiantCodeApogéLabel1" layoutX="130.0" layoutY="26.0" prefHeight="32.0" prefWidth="116.0">
+                                 <font>
+                                    <Font name="System Bold Italic" size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </Tab>
+              </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
